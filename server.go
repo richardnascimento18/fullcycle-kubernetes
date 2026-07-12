@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -14,5 +16,8 @@ func main() {
 }
 
 func Hello(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("<h1>Hello FullCycle!!!</h1>"))
+	name := os.Getenv("NAME")
+	age := os.Getenv("AGE")
+
+	fmt.Fprintf(w, "Hello, I am %s and I am %s years old.", name, age)
 }
