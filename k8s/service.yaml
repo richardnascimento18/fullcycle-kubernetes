@@ -5,10 +5,9 @@ metadata:
 spec:
   selector:
     app: goserver
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: goserver-service
       port: 8080
       targetPort: 8080
       protocol: TCP
-      nodePort: 30001 # >30.000 and <32767
