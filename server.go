@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	http.HandleFunc("/configmap", ConfigMap)
 	http.HandleFunc("/", Hello)
 
 	log.Println("Starting server on :8080")
@@ -20,4 +21,13 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 	age := os.Getenv("AGE")
 
 	fmt.Fprintf(w, "Hello, I am %s and I am %s years old.", name, age)
+}
+
+func ConfigMap(w http.ResponseWriter, r *http.Request) {
+	data, err := os.ReadFile("myfamily/family.txt")
+	if err != nil {
+		log.Fatalf("Error reading file: ", err)
+	}
+
+	fmt.Fprintf(w, "My family: %s", string(data))
 }
