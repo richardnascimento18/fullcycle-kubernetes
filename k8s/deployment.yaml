@@ -17,6 +17,15 @@ spec:
       containers:
         - name: goserver
           image: "walker769/hello-go:v8"
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 20Mi
+            limits:
+              cpu: 500m
+              memory: 25Mi
+
           readinessProbe:
             httpGet:
               path: /healthz
