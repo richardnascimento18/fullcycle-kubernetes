@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "walker769/hello-go:v8"
+          image: "walker769/hello-go:v9"
 
           resources:
             requests:
-              cpu: 100m
+              cpu: "0.3"
               memory: 20Mi
             limits:
-              cpu: 500m
+              cpu: "0.3"
               memory: 25Mi
 
           readinessProbe:
